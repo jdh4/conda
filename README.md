@@ -29,3 +29,54 @@ export CONDA_EXE='/Users/jhalverson/software/anaconda3/bin/conda' export _CE_M='
 ```
 
 On Mac, `$?` evaluates to 0 so `eval "$__conda_setup"` is ran. This is saying, if the previous command ran successfully then evaluate the output.
+
+
+## Add return statement to ignore the `conda init` stuff
+
+```
+return
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/jhalverson/software/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/jhalverson/software/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/jhalverson/software/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/jhalverson/software/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+```
+
+When then create a new shell and update `PATH`:
+
+```
+$ export PATH="/Users/jhalverson/software/anaconda3/bin:$PATH"
+$ conda info --envs
+# conda environments:
+#
+broken-links-env         /Users/jhalverson/Downloads/CONDA/envs/broken-links-env
+base                  *  /Users/jhalverson/software/anaconda3
+
+$ conda activate broken-links-env
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+```
