@@ -87,6 +87,7 @@ Here we also use the return statement to skip initialization except now we sourc
 
 ```
 $ which conda
+$
 $ . "/Users/jhalverson/software/anaconda3/etc/profile.d/conda.sh"
 $ which conda
 /Users/jhalverson/software/anaconda3/condabin/conda
