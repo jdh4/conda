@@ -1,7 +1,5 @@
 # conda
 
-# conda
-
 The stuff Conda writes to your shell configuration file:
 
 ```
