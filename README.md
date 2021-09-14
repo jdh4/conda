@@ -104,3 +104,5 @@ base                  *  /Users/jhalverson/software/anaconda3
 $ conda activate broken-links-env
 (broken-links-env) $ 
 ```
+
+We see there is quite a difference between sourcing conda.sh and just setting the PATH.
