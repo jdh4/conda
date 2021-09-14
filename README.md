@@ -80,3 +80,26 @@ See 'conda init --help' for more information and options.
 
 IMPORTANT: You may need to close and restart your shell after running 'conda init'.
 ```
+
+### sourcing conda.sh
+
+Here we also use the return statement to skip initialization except now we source the conda.sh script:
+
+```
+$ which conda
+$ . "/Users/jhalverson/software/anaconda3/etc/profile.d/conda.sh"
+$ which conda
+/Users/jhalverson/software/anaconda3/condabin/conda
+$ which python
+/usr/bin/python
+$ cat /Users/jhalverson/software/anaconda3/etc/profile.d/conda.sh | wc -l
+     100
+jhalverson@~$ conda info --envs
+# conda environments:
+#
+broken-links-env         /Users/jhalverson/Downloads/CONDA/envs/broken-links-env
+base                  *  /Users/jhalverson/software/anaconda3
+
+$ conda activate broken-links-env
+(broken-links-env) $ 
+```
